@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
         playerRb.AddForce(Vector3.forward * speed * verticallInput);
         playerRb.AddForce(Vector3.right * speed * horizontalInput);
 
+        // Jump action using user input
         if (Input.GetKeyDown(KeyCode.Space))
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
