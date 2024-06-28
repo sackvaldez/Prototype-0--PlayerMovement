@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private float speed = 10f;
     public float jumpForce = 10;
+    private float zLimits = 6.1f;
     private Rigidbody playerRb;
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,17 @@ public class PlayerController : MonoBehaviour
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+
+        if (transform.position.z > zLimits)
+        {
+            playerRb.transform.position = new Vector3(transform.position.x, transform.position.y, zLimits);
+        }
+
+        if (transform.position.z < -zLimits)
+        {
+            playerRb.transform.position = new Vector3(transform.position.x, transform.position.y, -zLimits);
+        }
+
 
     }
 }
