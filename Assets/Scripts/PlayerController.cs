@@ -6,7 +6,9 @@ public class PlayerController : MonoBehaviour
 {
     private float speed = 10f;
     public float jumpForce = 10;
-    private float zLimits = 6.1f;
+    private float zTopLimits = 8.4f;
+    private float zBottomLimits = -1.98f;
+
     private Rigidbody playerRb;
     // Start is called before the first frame update
     void Start()
@@ -39,14 +41,14 @@ public class PlayerController : MonoBehaviour
     // Prevent the player from leaving from top or bottom of the screen
     void ConstrainPlayerPosition()
     {
-        if (transform.position.z > zLimits)
+        if (transform.position.z > zTopLimits)
         {
-            playerRb.transform.position = new Vector3(transform.position.x, transform.position.y, zLimits);
+            playerRb.transform.position = new Vector3(transform.position.x, transform.position.y, zTopLimits);
         }
 
-        if (transform.position.z < -zLimits)
+        if (transform.position.z < zBottomLimits)
         {
-            playerRb.transform.position = new Vector3(transform.position.x, transform.position.y, -zLimits);
+            playerRb.transform.position = new Vector3(transform.position.x, transform.position.y, zBottomLimits);
         }
 
     }

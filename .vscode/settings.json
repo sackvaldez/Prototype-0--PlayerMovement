@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Personal Project.sln"
+    "dotnet.defaultSolution": "Prototype-0--PlayerMovement.sln"
 }
