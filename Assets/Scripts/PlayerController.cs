@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private float speed = 10f;
+    public float speed = 25f;
     public float jumpForce = 10;
     private float zTopLimits = 8.4f;
     private float zBottomLimits = -1.98f;
@@ -51,5 +51,22 @@ public class PlayerController : MonoBehaviour
             playerRb.transform.position = new Vector3(transform.position.x, transform.position.y, zBottomLimits);
         }
 
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Player has collided with enemy");
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Powerup"))
+        {
+            Destroy(other.gameObject);
+            Debug.Log("Player has collided with powerup");
+        }
     }
 }

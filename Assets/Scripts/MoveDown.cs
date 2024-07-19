@@ -6,6 +6,7 @@ public class MoveDown : MonoBehaviour
 {
 
     public float speed = 5.0f;
+    private float zBoundaries = -3.0f;
     private Rigidbody objectRb;
     // Start is called before the first frame update
     void Start()
@@ -17,5 +18,10 @@ public class MoveDown : MonoBehaviour
     void Update()
     {
         objectRb.AddForce(Vector3.forward * -speed);
+
+        if (transform.position.z < zBoundaries)
+        {
+            Destroy(gameObject);
+        }
     }
 }
